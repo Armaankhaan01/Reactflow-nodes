@@ -1,12 +1,20 @@
-import { Handle } from 'reactflow';
+import { Handle } from "reactflow";
 
-export const BaseNode = ({ id, data, label, handles, children, width = 200, height = 80 }) => {
+export const BaseNode = ({
+  id,
+  data,
+  label,
+  handles,
+  children,
+  width = 200,
+  height = 80,
+}) => {
   return (
-    <div style={{ width, height, border: '1px solid black' }}>
+    <div style={{ width, height, border: "1px solid black" }}>
       <div>
         <span>{label}</span>
       </div>
-      {children}
+      <div style={{ padding: "10px" }}>{children}</div>
       {handles?.map(({ type, position, idSuffix, style }, index) => (
         <Handle
           key={`${id}-${idSuffix}-${index}`}

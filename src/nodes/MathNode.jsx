@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { Handle, Position } from "reactflow";
 import { BaseNode } from "../BaseNode";
+import CustomInput from "../components/CustomInput";
+import { Button, Space, Typography } from "antd";
+import CustomSelect from "../components/CustomSelect";
 
 export const MathNode = ({ id, data }) => {
   const [operation, setOperation] = useState(data?.operation || "add");
@@ -29,56 +31,61 @@ export const MathNode = ({ id, data }) => {
     setResult(res);
   };
 
+  const operationOptions = [
+    { label: "Add", value: "add" },
+    { label: "Subtract", value: "subtract" },
+    { label: "Multiply", value: "multiply" },
+    { label: "Divide", value: "divide" },
+  ];
+
+  const handles = [
+    { type: "target", position: "Left", idSuffix: "inputA" },
+    { type: "target", position: "Left", idSuffix: "inputB" },
+    { type: "source", position: "Right", idSuffix: "output" },
+  ];
+
   return (
-    <BaseNode id={id} title="Math Operation" height={200}>
-      <div>
-        <label>
-          A:
-          <input
-            type="number"
-            className="w-full"
-            value={inputA}
-            onChange={(e) => setInputA(e.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <label>
-          B:
-          <input
-            type="number"
-            value={inputB}
-            onChange={(e) => setInputB(e.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <label>
-          Operation:
-          <select
-            value={operation}
-            onChange={(e) => setOperation(e.target.value)}
-          >
-            <option value="add">Add</option>
-            <option value="subtract">Subtract</option>
-            <option value="multiply">Multiply</option>
-            <option value="divide">Divide</option>
-          </select>
-        </label>
-      </div>
-      <button
+    <BaseNode
+      id={id}
+      label="Math Operation"
+      height={"auto"}
+      width={"auto"}
+      handles={handles}
+    >
+      <Space.Compact>
+        <CustomInput
+          label="A:"
+          value={inputA}
+          onChange={(e) => setInputA(e.target.value)}
+          type="number"
+          className={"w-fit"}
+        />
+      </Space.Compact>
+      <Space.Compact>
+        <CustomInput
+          label="B:"
+          value={inputB}
+          onChange={(e) => setInputB(e.target.value)}
+          type="number"
+          className={"w-fit"}
+        />
+      </Space.Compact>
+
+      <CustomSelect
+        options={operationOptions}
+        value={operation}
+        onChange={(value) => setOperation(value)}
+        className="w-full"
+      />
+      <Button
+        size="small"
         type="button"
         className="w-full bg-blue-500"
         onClick={calculateResult}
       >
         Calculate
-      </button>
-      <div>
-        <span>Result: {result}</span>
-      </div>
-
-      <Handle type="source" position={Position.Right} id={`${id}-output`} />
-      <Handle type="target" position={Position.Left} id={`${id}-input`} />
+      </Button>
+      <Typography>Result: {result}</Typography>
     </BaseNode>
   );
 };

@@ -1,14 +1,21 @@
+import { ConfigProvider, theme } from "antd";
+import { SubmitButton } from "./components/Submit";
 import { PipelineToolbar } from "./toolbar";
 import { PipelineUI } from "./ui";
-import { SubmitButton } from "./submit";
 
 function App() {
   return (
-    <div>
-      <PipelineToolbar />
-      <PipelineUI />
-      <SubmitButton />
-    </div>
+    <ConfigProvider
+      theme={{
+        algorithm: theme.darkAlgorithm,
+      }}
+    >
+      <div>
+        <PipelineToolbar />
+        <PipelineUI />
+        <SubmitButton />
+      </div>
+    </ConfigProvider>
   );
 }
 

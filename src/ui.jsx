@@ -1,4 +1,4 @@
-// ui.js
+// ui.jsx
 // Displays the drag-and-drop UI
 // --------------------------------------------------
 
@@ -13,6 +13,10 @@ import { TextNode } from "./nodes/TextNode";
 
 import "reactflow/dist/style.css";
 import { MathNode } from "./nodes/MathNode";
+import { APINode } from "./nodes/APINode";
+import { StringManipulatorNode } from "./nodes/StringNode";
+import { TimerNode } from "./nodes/TimerNode";
+import { DataFilterNode } from "./nodes/DataFilterNode";
 
 const gridSize = 20;
 const proOptions = { hideAttribution: true };
@@ -22,6 +26,13 @@ const nodeTypes = {
   customOutput: OutputNode,
   text: TextNode,
   math: MathNode,
+  string: StringManipulatorNode,
+  api: APINode,
+  timer: TimerNode,
+  filter:DataFilterNode
+  // : MathNode,
+  // math: MathNode,
+  // math: MathNode,
 };
 
 export const PipelineUI = () => {

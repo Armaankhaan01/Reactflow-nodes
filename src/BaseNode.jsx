@@ -23,7 +23,9 @@ export const BaseNode = ({
       <Typography className="pb-2.5 w-full text-center text-lg">
         {label}
       </Typography>
+
       <div className="flex flex-col gap-2">{children}</div>
+
       {handles?.map(({ type, position, idSuffix, style }, index) => (
         <Handle
           key={`${id}-${idSuffix}-${index}`}

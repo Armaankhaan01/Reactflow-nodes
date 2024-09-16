@@ -1,6 +1,6 @@
 import { ConfigProvider, theme } from "antd";
-import { SubmitButton } from "./components/Submit";
-import { PipelineToolbar } from "./toolbar";
+import { SubmitButton } from "./Submit";
+import { PipelineToolbar } from "./Toolbar";
 import { PipelineUI } from "./ui";
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
         algorithm: theme.darkAlgorithm,
       }}
     >
-      <div>
+      <div className="space-y-4">
         <PipelineToolbar />
         <PipelineUI />
         <SubmitButton />

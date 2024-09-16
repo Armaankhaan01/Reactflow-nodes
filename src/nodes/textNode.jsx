@@ -5,20 +5,18 @@ import CustomInput from "../components/CustomInput";
 export const TextNode = ({ id, data }) => {
   const [currText, setCurrText] = useState(data?.text || "{{input}}");
   const [variables, setVariables] = useState([]);
-  const [nodeSize, setNodeSize] = useState({ width: 150, height: 50 }); // Default node size
+  const [nodeSize, setNodeSize] = useState({ width: 150, height: 50 });
   const [isTyping, setIsTyping] = useState(false);
-  // Regex to detect variables in double curly braces
   const variableRegex = /\{\{(\w+)\}\}/g;
 
   // Function to dynamically adjust the node's width and height
   useEffect(() => {
     const lines = currText.split("\n").length;
-    const newHeight = Math.max(50, lines * 30); // 20px per line, min 50px height
-    const newWidth = Math.max(150, currText.length * 7); // 8px per character, min 150px width
+    const newHeight = Math.max(50, lines * 30);
+    const newWidth = Math.max(150, currText.length * 8);
     setNodeSize({ width: newWidth, height: newHeight });
   }, [currText]);
 
-  // Detect variables and update handles
   useEffect(() => {
     const detectedVariables = [...currText.matchAll(variableRegex)].map(
       (match) => match[1]
@@ -30,7 +28,6 @@ export const TextNode = ({ id, data }) => {
     setCurrText(e.target.value);
   };
 
-  // Handle focus and blur events to track when the user is typing
   const handleFocus = () => {
     setIsTyping(true);
   };
@@ -39,7 +36,6 @@ export const TextNode = ({ id, data }) => {
     setIsTyping(false);
   };
 
-  // Handles for the source output and dynamic variable inputs
   const outputHandle = {
     type: "source",
     position: "Right",

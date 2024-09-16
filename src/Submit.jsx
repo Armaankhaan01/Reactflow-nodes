@@ -1,9 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 import { Button } from "antd";
-import { useStore } from "../store";
+import { useStore } from "./store";
 import { shallow } from "zustand/shallow";
-import ResponseModal from "./ResponseModal";
+import ResponseModal from "./components/ResponseModal";
 export const SubmitButton = () => {
   const [alertData, setAlertData] = useState(null);
   const [open, setOpen] = useState(false);

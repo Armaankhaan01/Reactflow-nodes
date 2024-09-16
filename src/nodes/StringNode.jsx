@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Position } from "reactflow";
 import { BaseNode } from "../BaseNode";
 import CustomInput from "../components/CustomInput";
 import CustomSelect from "../components/CustomSelect";
@@ -39,8 +38,8 @@ export const StringManipulatorNode = ({ id, data }) => {
       data={data}
       label="String Manipulator"
       handles={[
-        { type: "target", position: Position.Left, idSuffix: "input" },
-        { type: "source", position: Position.Right, idSuffix: "output" },
+        { type: "target", position: "Left", idSuffix: "input" },
+        { type: "source", position: "Right", idSuffix: "output" },
       ]}
       height={"auto"}
     >

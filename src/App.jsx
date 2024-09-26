@@ -1,7 +1,7 @@
 import { ConfigProvider, theme } from "antd";
 import { SubmitButton } from "./Submit";
 import { PipelineToolbar } from "./Toolbar";
-import { PipelineUI } from "./ui";
+import { PipelineUI } from "./UI";
 
 function App() {
   return (
